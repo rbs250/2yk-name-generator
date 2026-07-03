@@ -304,6 +304,112 @@ body::after {
   background-image: url("backgrounds/disco.jpg");
 }
 
+/* --- Image-only themes (AI artwork with a base color while loading) ------ */
+
+.theme-stars {
+  background: linear-gradient(135deg, #ff4fae, #b44bd9);
+}
+
+.theme-stars::before {
+  background-image: url("backgrounds/stars.jpg");
+}
+
+.theme-cherries {
+  background: #ffc7dd;
+}
+
+.theme-cherries::before {
+  background-image: url("backgrounds/cherries.jpg");
+}
+
+.theme-tropical {
+  background: linear-gradient(160deg, #ff8ccc, #37c9a0);
+}
+
+.theme-tropical::before {
+  background-image: url("backgrounds/tropical.jpg");
+}
+
+.theme-jelly-candy {
+  background: #ff7fc4;
+}
+
+.theme-jelly-candy::before {
+  background-image: url("backgrounds/jelly-candy.jpg");
+}
+
+.theme-chrome {
+  background: linear-gradient(120deg, #d8dbe6, #f2c8ff, #b9c3d6);
+}
+
+.theme-chrome::before {
+  background-image: url("backgrounds/chrome.jpg");
+}
+
+.theme-butterflies {
+  background: linear-gradient(135deg, #ffa9df, #c9b6ff);
+}
+
+.theme-butterflies::before {
+  background-image: url("backgrounds/butterflies.jpg");
+}
+
+.theme-pearls {
+  background: linear-gradient(140deg, #ffeef8, #ffd6ec);
+}
+
+.theme-pearls::before {
+  background-image: url("backgrounds/pearls.jpg");
+}
+
+.theme-rainbow-rhinestones {
+  background: linear-gradient(130deg, #ff6db8, #ffd23e, #4fd0ff);
+}
+
+.theme-rainbow-rhinestones::before {
+  background-image: url("backgrounds/rainbow-rhinestones.jpg");
+}
+
+.theme-lava-lamp {
+  background: linear-gradient(180deg, #ff4fae, #7a1fd0);
+}
+
+.theme-lava-lamp::before {
+  background-image: url("backgrounds/lava-lamp.jpg");
+}
+
+.theme-ocean-gel {
+  background: linear-gradient(170deg, #6fd9ff, #1f7ad0);
+}
+
+.theme-ocean-gel::before {
+  background-image: url("backgrounds/ocean-gel.jpg");
+}
+
+.theme-slime {
+  background: linear-gradient(160deg, #a4f24f, #37c96b);
+}
+
+.theme-slime::before {
+  background-image: url("backgrounds/slime.jpg");
+}
+
+.theme-flames {
+  background: linear-gradient(0deg, #ff5f2f, #ff2f9c);
+}
+
+.theme-flames::before {
+  background-image: url("backgrounds/flames.jpg");
+}
+
+.theme-checker {
+  background: #ffd9ee;
+}
+
+.theme-checker::before {
+  background-image: url("backgrounds/checker.jpg");
+}
+
 body.theme-on .name {
   text-shadow:
     0 2px 0 rgba(255, 173, 221, 0.95),

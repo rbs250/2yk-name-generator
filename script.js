@@ -27,13 +27,37 @@ const THEMES = [
     id: "glitter",
     label: "נצנצים",
     emoji: "💖",
-    match: /גליט|נצנצ|נצנץ|זוהר|זהר|כוכב/,
+    match: /גליט|נצנצ|נצנץ|זוהר|זהר/,
+  },
+  {
+    id: "stars",
+    label: "כוכבים",
+    emoji: "⭐",
+    match: /כוכב|שביט/,
   },
   {
     id: "sequins",
     label: "פאייטים",
     emoji: "✨",
     match: /פאייט|קונפטי|בלינג|גלוס|לק ג|פדיקור|מניקור|אקסטנשן|פאשניסט|סטרפלס|פלטפורמ/,
+  },
+  {
+    id: "cherries",
+    label: "דובדבנים",
+    emoji: "🍒",
+    match: /דובדבנ/,
+  },
+  {
+    id: "tropical",
+    label: "טרופי",
+    emoji: "🌴",
+    match: /מנגו|קוקוס|אננס|טרופ|פפאי/,
+  },
+  {
+    id: "fruity",
+    label: "אבטיח",
+    emoji: "🍉",
+    match: /אבטיח|תפוח|פטל|קלמנטינ|רימונ|פומל|צימוק|לימונ|מרמלד|חמוצ/,
   },
   {
     id: "leopard",
@@ -54,10 +78,16 @@ const THEMES = [
     match: /קצפת|פלומב|מרשמלו/,
   },
   {
+    id: "jelly-candy",
+    label: "ג׳לי",
+    emoji: "🧸",
+    match: /ג׳לי|גומ/,
+  },
+  {
     id: "bubblegum",
     label: "מסטיק",
     emoji: "🍬",
-    match: /מסטיק|בזוק|סוכר|גומ|בונבונ|טופי/,
+    match: /מסטיק|בזוק|סוכר|בונבונ|טופי/,
   },
   {
     id: "choco",
@@ -66,16 +96,16 @@ const THEMES = [
     match: /קרמבו|שוקו|פודינג|עוגי/,
   },
   {
-    id: "fruity",
-    label: "אבטיח",
-    emoji: "🍉",
-    match: /אבטיח|תפוח|דובדבנ|פטל|מנגו|קלמנטינ|רימונ|פומל|צימוק|לימונ|מרמלד|חמוצ/,
-  },
-  {
     id: "holo",
     label: "הולוגרמה",
     emoji: "💿",
     match: /טמגוצ|ביפר|דיסקמנ|וולקמנ|גוגל|מילניום|ניילונ/,
+  },
+  {
+    id: "chrome",
+    label: "כרום",
+    emoji: "🪞",
+    match: /פלטינ|כרום|טיטניום/,
   },
   {
     id: "denim",
@@ -88,6 +118,54 @@ const THEMES = [
     label: "דיסקו",
     emoji: "🪩",
     match: /דיסקו|היפהופ|מנגינ|סלסול/,
+  },
+  {
+    id: "butterflies",
+    label: "פרפרים",
+    emoji: "🦋",
+    match: /פרפר/,
+  },
+  {
+    id: "pearls",
+    label: "פנינים",
+    emoji: "📿",
+    match: /פנינ|צדפ|מרגלית/,
+  },
+  {
+    id: "rainbow-rhinestones",
+    label: "יהלומים",
+    emoji: "💎",
+    match: /יהלומ|קריסטל|ריינסטון/,
+  },
+  {
+    id: "lava-lamp",
+    label: "מנורת לבה",
+    emoji: "🌋",
+    match: /לאבה|בועות/,
+  },
+  {
+    id: "ocean-gel",
+    label: "אוקיינוס",
+    emoji: "🌊",
+    match: /אוקיינ|גלי |גלית|ים$/,
+  },
+  {
+    id: "slime",
+    label: "סליים",
+    emoji: "🧪",
+    match: /סליים|רירית/,
+  },
+  {
+    id: "flames",
+    label: "אש",
+    emoji: "🔥",
+    match: /להבה|בוער|שרפ/,
+  },
+  {
+    id: "checker",
+    label: "משבצות",
+    emoji: "🏁",
+    match: /משבצ|דמקה|שחמט/,
   },
 ];
 
@@ -390,9 +468,35 @@ function drawThemeBackground(ctx, themeId, rand) {
     holo: drawHoloBackground,
     denim: drawDenimBackground,
     disco: drawDiscoBackground,
+    checker: drawCheckerBackground,
+    // New image themes fall back to the closest procedural pattern
+    // if the artwork can't be loaded (e.g. offline).
+    stars: drawGlitterBackground,
+    cherries: drawFruityBackground,
+    tropical: drawFruityBackground,
+    "jelly-candy": drawBubblegumBackground,
+    chrome: drawHoloBackground,
+    butterflies: drawDefaultBackground,
+    pearls: drawSequinsBackground,
+    "rainbow-rhinestones": drawSequinsBackground,
+    "lava-lamp": drawDefaultBackground,
+    "ocean-gel": drawHoloBackground,
+    slime: drawDefaultBackground,
+    flames: drawDiscoBackground,
   };
 
   (painters[themeId] || drawDefaultBackground)(ctx, rand);
+}
+
+function drawCheckerBackground(ctx) {
+  const step = 90;
+
+  for (let row = 0; row * step < CARD_SIZE; row += 1) {
+    for (let col = 0; col * step < CARD_SIZE; col += 1) {
+      ctx.fillStyle = (row + col) % 2 === 0 ? "#ffd9ee" : "#ff2f9c";
+      ctx.fillRect(col * step, row * step, step, step);
+    }
+  }
 }
 
 function drawGlitterBackground(ctx, rand) {
